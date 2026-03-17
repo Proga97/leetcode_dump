@@ -5,20 +5,21 @@
 #         self.next = next
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        head = current = ListNode()
+        if not list1 or not list2:
+            return list2 or list1
+
+        node = start = ListNode()
+
         while list1 and list2:
-            if list1.val < list2.val:
-                current.next = list1
+            if list1.val <= list2.val:
+                start.next = list1
                 list1 = list1.next
             else:
-                current.next = list2
+                start.next = list2
                 list2 = list2.next
-            current = current.next
-        if list1:
-            current.next = list1
-        if list2:
-            current.next = list2
-        return head.next
-        
-            
+            start = start.next
+        if list1 or list2:
+            start.next = list1 or list2
+        return node.next
+
         
