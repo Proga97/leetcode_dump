@@ -14,10 +14,10 @@ class Solution:
         while q:
             lLen = len(q)
             temp = None
-            print("ilen",lLen)
+            # print("ilen",lLen)
             for _ in range(lLen):
                 node = q.popleft()
-                print(node.val,temp)
+                # print(node.val,temp)
                 if temp == None:
                     temp = node.val
                     print("temp",temp)
