@@ -10,20 +10,23 @@ class Solution:
         seen = set()
         count = 0
         rows, cols = len(grid), len(grid[0]) 
+        
         def bfs(i,j):
             qu = collections.deque()
             qu.append((i,j))
-
+            seen.add((i,j))
             while qu:
                 i, j = qu.popleft()
-                seen.add((i,j))
+                
                 # print("checking",i,j)
                 directions = [[-1,0], [1,0], [0,-1], [0,1]]
                 for dr, dc in directions:
                     newR = i + dr
                     newC = j + dc
-                    if newR in range(rows) and newC in range(cols) and grid[newR][newC] == "1" and (newR,newC) not in seen:
+                    if 0 <= newR < rows and 0 <= newC < cols and grid[newR][newC] == "1" and (newR,newC) not in seen:
                         qu.append((newR,newC))
+                        seen.add((newR,newC))
+
                         # print("part row",newR,newC)
             
 
