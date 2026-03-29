@@ -8,7 +8,8 @@ class Solution:
     def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
         if not root:
             return 0
-        arr = []
+        arr = [0]
+        # ress = 0
         def inOrder(node):
             if not node:
                 return
@@ -18,11 +19,14 @@ class Solution:
             elif node.val > high:
                 inOrder(node.left)
             else:
-                arr.append(node.val)
+                # arr.append(node.val)
+                arr[0] += node.val
+                # ress = ress + node.val 
                 inOrder(node.left)
                 inOrder(node.right)
         inOrder(root)
         # print(arr)
-        return sum(arr)
+        # print(arr)
+        return arr[0]
 
         
