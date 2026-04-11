@@ -1,12 +1,18 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        numMap = {}
-        n = len(nums)
+                # Initialize a HashMap to store the number and its index
+        hashtable = {}
 
-        for i in range(n):
-            complement = target - nums[i]
-            if complement in numMap:
-                return [numMap[complement], i]
-            numMap[nums[i]] = i
-
-        return []
+        # Iterate through the array
+        for x in range(len(nums)):
+            # Calculate the complement (remaining value to reach the target)
+            remain = target - nums[x]
+            
+            # Check if the complement is already in the HashMap
+            if remain in hashtable:
+                # If found, return the indices of the complement and the current number
+                return [hashtable[remain], x]
+            
+            # If not found, store the current number and its index in the HashMap
+            hashtable[nums[x]] = x
+        
