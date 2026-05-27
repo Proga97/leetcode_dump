@@ -1,19 +1,20 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        if len(s) <2:
+        if len(s) <= 1:
             return True
-        start = 0
-        end = len(s) - 1
-        while start < end:
-            while not s[start].isalnum() and start < end:
-                start += 1
-            while not s[end].isalnum() and start < end:
-                end -= 1
-            if s[start].lower() != s [end].lower():
-                # print(start, end, s[start],s[end])
+        s = s.lower()
+        res = []
+        for a in s:
+            if a.isalnum():
+                res.append(a)
+        # print(res)
+        for i in range(len(res)//2):
+            # print(res[i],res[-i])
+            if res[i] != res [-i-1]:
                 return False
-            start += 1
-            end -= 1
         return True
-            
         
+
+# Synced seamlessly with LeetHub Pro
+# Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
+# Get it here: https://chromewebstore.google.com/detail/leethub-v4/bcilpkkbokcopmabingnndookdogmbna
