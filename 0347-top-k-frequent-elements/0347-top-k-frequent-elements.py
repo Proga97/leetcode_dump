@@ -1,34 +1,33 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        ma = collections.defaultdict(int)
-        for n in nums:
-            ma[n] += 1
-        # heap 
+        counter_map = Counter(nums)
+        # print(counter_map)
         # heap = []
-        # for key,v in ma.items():
-        #     heapq.heappush(heap,(v,key))
+        # for key, value in counter_map.items():
+        #     heapq.heappush(heap,(value,key))
         #     if len(heap) > k:
         #         heapq.heappop(heap)
         # # print(heap)
-        # arr = []
-        # for n in heap:
-        #     arr.append(n[1])
-        # # print(arr)
-        # return arr
+        # res = []
+        # for (value, key) in heap:
+        #     res.append(key)
+        # # print(res)
+        # return res
 
-        # bucket
-        arr = [[] for _ in range(len(nums)+1)]
-        for key,v in ma.items():
-            arr[v].append(key)
-        # print(arr)
+        #Bucket Sort
+        buckets = [[] for _ in range(len(nums) + 1)]
+        # print(buckets)
+        for key, value in counter_map.items():
+            buckets[value].append(key)
+        # print(buckets)
         res = []
-        for i in range(len(arr)-1,0,-1):
-            for z in arr[i]:
-                res.append(z)
-                if len(res) == k: 
-                    # print(res)
-                    return res
+        for i in range(len(buckets) - 1 ,0,-1):
+            if buckets[i]:
+                for num in buckets[i]:
+                    res.append(num)
+                    if len(res) == k:
+                        return res
 
-
-        
-        
+# Synced seamlessly with LeetHub Pro
+# Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
+# Get it here: https://chromewebstore.google.com/detail/leethub-v4/bcilpkkbokcopmabingnndookdogmbna
