@@ -3,9 +3,10 @@ class Solution:
         low = float('inf')
         max_profit = 0
         for price in prices:
-            low = min(low, price)
-            if price > low:
-                max_profit = max(price - low, max_profit)
+            if price < low:
+                low = price
+            if price - low > max_profit:
+                max_profit = price - low
         return max_profit
             
 
