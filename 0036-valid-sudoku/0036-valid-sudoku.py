@@ -1,24 +1,23 @@
-import collections 
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        box = collections.defaultdict(set)
-        rows =  collections.defaultdict(set)
-        cols =  collections.defaultdict(set)
-
-        for row in range(9):
-            for col in range(9):
-               if board[row][col] != ".":
-                    num = board[row][col]
-                    if num in rows[row] or num in cols[col] or num in box[row//3,col//3]:
-                        # print("in",num,row,rows)
+        columns, rows, grid = collections.defaultdict(set), collections.defaultdict(set), collections.defaultdict(set)
+        for r in range(len(board)):
+            for c in range(len(board[r])):
+                if board[r][c] != ".":
+                    num = board[r][c]
+                    if num in rows[r] or num in columns[c] or num in grid[r//3,c//3]:
                         return False
-                    rows[row].add(num)
-                    cols[col].add(num)
-                    box[row//3,col//3].add(num)
+                    rows[r].add(board[r][c])
+                    columns[c].add(board[r][c])
+                    grid[r//3,c//3].add(board[r][c]) 
+        # print(rows)
+        # print(columns)
+        # print(grid)
         return True
-        # print(rows,cols,box) 
-                    
-
 
 
         
+
+# Synced seamlessly with LeetHub Pro
+# Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
+# Get it here: https://chromewebstore.google.com/detail/leethub-v4/bcilpkkbokcopmabingnndookdogmbna
