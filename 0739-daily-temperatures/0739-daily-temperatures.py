@@ -1,29 +1,24 @@
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        # l = 0 
-        # r = 1
-        res = [0] * len(temperatures)
-        stack = []
-        for i in range(len(temperatures)):
-                while stack and temperatures[stack[-1]] < temperatures[i]:
-                    x = stack.pop()
-                    print(x,i)
-                    res[x] = i - x
-                stack.append(i)
+        ans = [0] * len(temperatures)
+        hottest = 0 
+        for i in range(len(temperatures)-1, -1, -1):
+            curr_temp = temperatures[i]
+            if curr_temp >= hottest:
+                hottest = curr_temp
+                continue
+            days = 1
+            while temperatures[i + days] <= curr_temp:
+                days += ans[i + days]
+            ans[i] = days
+        return ans
+        
 
-            
 
-        # while r < len(temperatures):
-        #     if temperatures[l] < temperatures[r]:
-        #         res.append(r-l)
-        #         l += 1
-        #         r = l + 1
-        #     else:
-        #         r+=1
-        # # print(res)
-        # while l < len(temperatures):
-        #     res.append(0)
-        #     l+=1
-        print(res)
-        return res
 
+
+        
+
+# Synced seamlessly with LeetHub Pro
+# Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
+# Get it here: https://chromewebstore.google.com/detail/leethub-v4/bcilpkkbokcopmabingnndookdogmbna
