@@ -4,9 +4,7 @@ class Solution:
         heapify(sticks)
         res = 0
         while len(sticks) >  1:
-            first = heappop(sticks)
-            second = heappop(sticks)
-            total = first+second
+            total = heappop(sticks)+heappop(sticks)
             res += total
             heappush(sticks,total)
         return res      
