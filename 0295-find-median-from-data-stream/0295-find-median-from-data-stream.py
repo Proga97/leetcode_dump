@@ -2,32 +2,33 @@ import heapq
 class MedianFinder:
 
     def __init__(self):
-        self.min_heap = []
-        self.max_heap = []
-    def addNum(self, num: int) -> None:
-        if not self.max_heap or -self.max_heap[0] >= num:
-            heapq.heappush(self.max_heap,-num)
-        else:
-            heapq.heappush(self.min_heap,num)
+        self.maxHeap = []
+        self.minHeap = []
         
-        if len(self.max_heap) > len(self.min_heap) + 1:
-            heapq.heappush(self.min_heap,-heapq.heappop(self.max_heap))
-        elif len(self.min_heap) > len(self.max_heap):
-            heapq.heappush(self.max_heap,-heapq.heappop(self.min_heap))
 
+    def addNum(self, num: int) -> None:
+        if not self.maxHeap or -self.maxHeap[0] >= num:
+            heappush(self.maxHeap,-num)
+        else:
+            heappush(self.minHeap,num)
+        
+        if len(self.maxHeap) > len(self.minHeap) + 1:
+            heappush(self.minHeap,-heappop(self.maxHeap))
+        elif len(self.minHeap) > len(self.maxHeap):
+            heappush(self.maxHeap,-heappop(self.minHeap))
+        # print(self.minHeap,self.maxHeap)
+        
 
     def findMedian(self) -> float:
-        if len(self.min_heap) == len(self.max_heap):
-            return (self.min_heap[0] + -self.max_heap[0])/2
-        else: return -self.max_heap[0]
-        # isEven = n % 2 == 0
-        # while self.heap:
-        #     n -= 1
-        #     if n == 0:
-        #         print(self.heap)
-        #         if isEven:
-        #             return (heapq.heappop(self.heap) + heapq.heappop(self.heap))/2
-        #         else: return heapq.heappop(self.heap) 
+        if len(self.minHeap) == len(self.maxHeap):
+            # print((self.arr[n//2] + self.arr[(n//2) - 1]) / 2,self.arr[n//2],self.arr[(n//2) - 1],self.arr)
+            return (self.minHeap[0] + -self.maxHeap[0]) / 2
+        else:
+            # print(self.arr[n//2],self.arr)
+            return -self.maxHeap[0]
+
+
+
         
 
 
@@ -35,3 +36,7 @@ class MedianFinder:
 # obj = MedianFinder()
 # obj.addNum(num)
 # param_2 = obj.findMedian()
+
+# Synced seamlessly with LeetHub Pro
+# Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
+# Get it here: https://chromewebstore.google.com/detail/leethub-v4/bcilpkkbokcopmabingnndookdogmbna
