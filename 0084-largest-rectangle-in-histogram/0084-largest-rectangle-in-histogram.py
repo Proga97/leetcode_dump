@@ -13,13 +13,19 @@ class Solution:
                     index, height = stack.pop()
                     # print(index, height)
                     # print(curr, stack, (i - index))
-                    max_area = max(max_area, height * (i - index))
+                    area = height * (i - index)
+                    if area > max_area:
+                        max_area = area
+                    # max_area = max(max_area, height * (i - index))
                     start = index
                 stack.append((start,curr))
         # print(stack,max_area)
         while stack:
             index, height = stack.pop()
-            max_area = max(max_area, height * (len(heights) - index))
+            area = height * (len(heights) - index)
+            if area > max_area:
+                max_area = area
+            # max_area = max(max_area, height * (len(heights) - index))
         return max_area
 
 
