@@ -7,18 +7,20 @@ class Solution:
             route_map[i[1]].append(i[0])
         # print(route_map)
         stack = [source]
+        seen.add(source)
 
         while stack:
             curr = stack.pop()
-            if curr == destination:
-                return True
-            if curr not in seen:
-                seen.add(curr)
-                for i in route_map[curr]:
-                    if i not in seen:
-                        stack.append(i)
+            
+            # if curr not in seen:
+            for i in route_map[curr]:
+                if i == destination:
+                    return True
+                if i not in seen:
+                    seen.add(i)
+                    stack.append(i)
 
-        return False
+        return destination in seen
 
 
         
