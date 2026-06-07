@@ -1,22 +1,25 @@
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        seen = set()
+        seen = [False] * len(isConnected)
         count = 0 
         stack = []
         for i in range(len(isConnected)):
-            if i not in seen:
+            if not seen[i]:
                 count+=1
                 stack.append(i)
+                seen[i] = True
                 while stack:
                     x = stack.pop()
-                    if x in seen:
-                        continue
-                    seen.add(x)
                     for j in range(len(isConnected)):  
-                        if isConnected[x][j] == 1 and j not in seen:
+                        if isConnected[x][j] == 1 and not seen[j] :
                             stack.append(j)
+                            seen[j] = True
 
         return count
 
 
         
+
+# Synced seamlessly with LeetHub Pro
+# Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
+# Get it here: https://chromewebstore.google.com/detail/bcilpkkbokcopmabingnndookdogmbna
