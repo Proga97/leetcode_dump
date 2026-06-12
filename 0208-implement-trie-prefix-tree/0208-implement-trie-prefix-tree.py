@@ -1,43 +1,38 @@
 class TrieNode:
-    def __init__(self):
-        self.children = {}  # Dictionary to store child nodes.
-        self.isEnd = False  # Flag to represent end of a word.
+   def __init__(self):
+       self.children = {}  # Dictionary to store child nodes.
+       self.isEnd = False  # Flag to represent end of a word.
 
 class Trie:
 
     def __init__(self):
         self.root = TrieNode()
 
-    def charToIndex(self, ch):
-        return ord(ch) - ord('a')
-
     def insert(self, word: str) -> None:
-        root = self.root
-        for ch in word:
-            ch = self.charToIndex(ch)
-            print(ch)
-            if ch not in root.children:
-                root.children[ch] = TrieNode()
-            root = root.children[ch]
-        root.isEnd = True
-
+        node = self.root
+        for s in word:
+            if s not in node.children:
+                node.children[s] = TrieNode()
+            node = node.children[s]
+        node.isEnd = True
+        
     def search(self, word: str) -> bool:
-        root = self.root
-        for ch in word:
-            ch = self.charToIndex(ch)
-            if ch not in root.children:
-                return False
-            root = root.children[ch]
-        return root.isEnd      
+        node = self.root
+        for s in word:
+            if s in node.children:
+                node = node.children[s]
+            else: return False
+        
+        return node.isEnd
         
 
     def startsWith(self, prefix: str) -> bool:
-        root = self.root
-        for ch in prefix:
-            ch = self.charToIndex(ch)
-            if ch not in root.children:
-                return False
-            root = root.children[ch]
+        node = self.root
+        for s in prefix:
+            if s in node.children:
+                node = node.children[s]
+            else: return False
+        
         return True
         
 
@@ -47,3 +42,7 @@ class Trie:
 # obj.insert(word)
 # param_2 = obj.search(word)
 # param_3 = obj.startsWith(prefix)
+
+# Synced seamlessly with LeetHub Pro
+# Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
+# Get it here: https://chromewebstore.google.com/detail/bcilpkkbokcopmabingnndookdogmbna
