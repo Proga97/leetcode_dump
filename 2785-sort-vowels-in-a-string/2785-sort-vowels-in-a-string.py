@@ -8,17 +8,17 @@ class Solution:
                 vowels_counter[i] += 1
         vowels_sorted = 'AEIOUaeiou'
         index = 0
-        res = ''
+        res = []
         for c in s:
             if c not in vowels_map:
-                res += c
+                res.append(c)
             else:
                 while index < len(vowels_map) and vowels_counter[vowels_sorted[index]] <= 0:
                     index += 1
                 if index < len(vowels_map):
-                    res += vowels_sorted[index]
+                    res.append(vowels_sorted[index])
                     vowels_counter[vowels_sorted[index]] -= 1
-        return res
+        return "".join(res)
 
         
 
