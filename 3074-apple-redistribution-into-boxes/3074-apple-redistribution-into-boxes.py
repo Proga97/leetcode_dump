@@ -3,8 +3,8 @@ class Solution:
         total_apples = sum(apple)
         capacity.sort(reverse = True)
         capacity_total = 0
-        for i, val in enumerate(capacity):
-            capacity_total += val
+        for i in range(len(capacity)):
+            capacity_total += capacity[i]
             if capacity_total >= total_apples:
                 return i + 1
 
