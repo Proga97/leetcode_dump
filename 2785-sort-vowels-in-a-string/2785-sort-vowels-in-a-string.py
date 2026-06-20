@@ -13,11 +13,11 @@ class Solution:
             if c not in vowels_map:
                 res.append(c)
             else:
-                while index < len(vowels_map) and vowels_counter[vowels_sorted[index]] <= 0:
+                while vowels_counter[vowels_sorted[index]] <= 0:
                     index += 1
-                if index < len(vowels_map):
-                    res.append(vowels_sorted[index])
-                    vowels_counter[vowels_sorted[index]] -= 1
+                # if index < len(vowels_map):
+                res.append(vowels_sorted[index])
+                vowels_counter[vowels_sorted[index]] -= 1
         return "".join(res)
 
         
