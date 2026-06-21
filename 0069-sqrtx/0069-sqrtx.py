@@ -3,7 +3,7 @@ class Solution:
         high = x//2 + 1
         low = 1
         while low <= high:
-            mid = (low + high) // 2
+            mid = low + (high - low) // 2
             sq = mid * mid
             if sq > x:
                 high = mid -1
