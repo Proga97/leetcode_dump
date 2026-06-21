@@ -5,20 +5,12 @@ class Solution:
         while c < len(matrix[0]) and r >= 0:
             
             if matrix[r][c] > target:
-                # print("row",matrix[r][c])
                 r -= 1
-                # print("row2",matrix[r][c])
             elif matrix[r][c] < target: 
-                # print("column",matrix[r][c])
                 c += 1
-                # print("column2",matrix[r][c])
-            # elif r < len(matrix) - 1 and matrix[r][c] <= target and matrix[r+1][c] <= target:
-            #     print("row",matrix[r][c])
-            #     r += 1
             else:
-                # print("break",matrix[r][c])
-                # break
                 return True
+                
         return False
             
 
