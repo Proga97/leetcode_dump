@@ -1,0 +1,29 @@
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+    
+        def checkPalindrome(l,r):
+            while l < r:
+                if s[l] != s[r]:
+                    return False
+                l += 1
+                r -= 1
+            return True
+
+        l = 0
+        r = len(s) -1
+        while l < r:
+            if s[l] == s[r]:
+                l += 1
+                r -= 1
+            else:
+                return checkPalindrome(l+1,r) or checkPalindrome(l,r-1)
+        return True
+            
+            
+
+
+        
+
+# Synced seamlessly with LeetHub Pro
+# Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
+# Get it here: https://chromewebstore.google.com/detail/bcilpkkbokcopmabingnndookdogmbna
