@@ -1,12 +1,10 @@
 class Solution:
     def largestPalindromic(self, num: str) -> str:
-        freq = [0] * 10
-        for n in num:
-            freq[int(n)] += 1
+        freq = Counter(num)
         res = []
         middle = -1
-        for i in range(len(freq) - 1,-1,-1):
-            if i != 0 or len(res) > 0:
+        for i in "9876543210":
+            if i != "0" or len(res) > 0:
                 n = freq[i]
                 while n > 1:
                     res.append(str(i))
