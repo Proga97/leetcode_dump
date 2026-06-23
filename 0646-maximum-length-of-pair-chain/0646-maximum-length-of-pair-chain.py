@@ -1,7 +1,7 @@
 class Solution:
     def findLongestChain(self, pairs: List[List[int]]) -> int:
         arr = sorted(pairs, key = lambda x: x[1])
-        print(arr)
+        # print(arr)
         curr_end = float("-inf")
         count = 0
         for n in arr:
