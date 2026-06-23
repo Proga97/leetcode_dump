@@ -1,17 +1,17 @@
 class Solution:
     def minimumDeletions(self, nums: List[int]) -> int:
-        min_index = -1
-        min_val = float("inf")
-        max_index = -1
-        max_val = float("-inf")
-        for i in range(len(nums)):
-            n = nums[i]
-            if n > max_val:
-                max_val = n
-                max_index = i
-            if n < min_val:
-                min_val = n
-                min_index = i
+        min_index = nums.index(min(nums))
+        # min_val = float("inf")
+        max_index = nums.index(max(nums))
+        # max_val = float("-inf")
+        # for i in range(len(nums)):
+        #     n = nums[i]
+        #     if n > max_val:
+        #         max_val = n
+        #         max_index = i
+        #     if n < min_val:
+        #         min_val = n
+        #         min_index = i
         # print(min_val,min_index,max_val, max_index)
         if min_index == max_index:
             return min_index + 1
