@@ -15,13 +15,10 @@ class Solution:
             curr_roots = qu.popleft()
             # print(curr_roots)
             # max_width = max(max_width,len(curr_roots))
-            first = -1
-            last = -1
+            first = curr_roots[0][1]
+            last = curr_roots[-1][1]
             next_roots = []
             for (curr, index) in curr_roots:
-                if first == -1:
-                    first = index
-                last = index
                 if curr.left:
                     next_roots.append((curr.left,2 * index))
                 if curr.right:
