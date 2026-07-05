@@ -8,25 +8,24 @@ class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
             return []
-        q = collections.deque()
-        q.append(root)
+        qu = deque()
+        qu.append([root])
         res = []
-        while q:
-            lLen = len(q)
-            temp = None
-            # print("ilen",lLen)
-            for _ in range(lLen):
-                node = q.popleft()
-                # print(node.val,temp)
-                if temp == None:
-                    temp = node.val
-                    print("temp",temp)
-                if node.right:
-                    q.append(node.right)
-                if node.left:
-                    q.append(node.left)
-            res.append(temp)
-        # print(res)
+        while qu:
+            curr_nodes = qu.popleft()
+            next_level = []
+            for i in range(len(curr_nodes)):
+                curr = curr_nodes[i]
+                if i == len(curr_nodes) - 1:
+                    res.append(curr.val)
+                if curr.left:
+                    next_level.append(curr.left)
+                if curr.right:
+                    next_level.append(curr.right)
+            if next_level:
+                qu.append(next_level)
         return res
 
-        
+# Synced seamlessly with LeetHub Pro
+# Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
+# Get it here: https://chromewebstore.google.com/detail/bcilpkkbokcopmabingnndookdogmbna
