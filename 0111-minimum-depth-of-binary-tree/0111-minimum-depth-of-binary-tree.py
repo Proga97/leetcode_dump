@@ -9,22 +9,34 @@ class Solution:
         if not root:
             return 0
         qu = deque()
-        qu.append([root])
-        level = 0
+        qu.append((root,1))
         while qu:
-            curr_nodes = qu.popleft()
-            level += 1
-            next_nodes = []
-            for curr in curr_nodes:
-                if curr.left or curr.right:
-                    if curr.left:
-                        next_nodes.append(curr.left)
-                    if curr.right:
-                        next_nodes.append(curr.right)
-                else:
-                    return level
-            qu.append(next_nodes)
+            curr,level = qu.popleft()
+            if curr.left or curr.right:
+                if curr.left:
+                    qu.append((curr.left,level+1))
+                if curr.right:
+                   qu.append((curr.right,level+1))
+            else:
+                return level 
         return level
+        # qu = deque()
+        # qu.append([root])
+        # level = 0
+        # while qu:
+        #     curr_nodes = qu.popleft()
+        #     level += 1
+        #     next_nodes = []
+        #     for curr in curr_nodes:
+        #         if curr.left or curr.right:
+        #             if curr.left:
+        #                 next_nodes.append(curr.left)
+        #             if curr.right:
+        #                 next_nodes.append(curr.right)
+        #         else:
+        #             return level
+        #     qu.append(next_nodes)
+        # return level
         
 
 # Synced seamlessly with LeetHub Pro
