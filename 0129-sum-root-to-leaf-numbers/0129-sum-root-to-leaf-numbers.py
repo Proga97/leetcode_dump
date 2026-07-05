@@ -9,14 +9,14 @@ class Solution:
         res = []
         def dfs(node, curr):
             if not node:
-                return ""
-            number = curr + str(node.val)
+                return 0
+            number = 10 * curr + node.val
             if not node.left and not node.right:
                 res.append(number)
             dfs(node.left,number)
             dfs(node.right,number)
-        dfs(root,"")
-        return sum(int(num) for num in res)
+        dfs(root,0)
+        return sum(res)
 
 
         
