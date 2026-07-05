@@ -8,24 +8,25 @@ class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root:
             return []
-        
-        qu = collections.deque()
-        qu.append(root)
         res = []
+        qu = deque()
+        qu.append([root])
         while qu:
-            lLen = len(qu)
-            # print(nodes)
-            level = []
-            for _ in range(lLen):
-                n = qu.popleft()
-                level.append(n.val)
-                if n.left:
-                    qu.append(n.left)
-                if n.right:
-                    qu.append(n.right)
-            res.append(level)
-        # print(res)
-        return res    
-
-
+            curr_nodes = qu.popleft()
+            next_nodes = []
+            ans = []
+            for curr in curr_nodes:
+                ans.append(curr.val)
+                if curr.left:
+                    next_nodes.append(curr.left)
+                if curr.right:
+                    next_nodes.append(curr.right)
+            res.append(ans)
+            if next_nodes:
+                qu.append(next_nodes)
+        return res
         
+
+# Synced seamlessly with LeetHub Pro
+# Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
+# Get it here: https://chromewebstore.google.com/detail/bcilpkkbokcopmabingnndookdogmbna
