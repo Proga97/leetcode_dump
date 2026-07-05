@@ -16,12 +16,13 @@ class Solution:
             next_level = []
             for i in range(len(curr_nodes)):
                 curr = curr_nodes[i]
-                if i == len(curr_nodes) - 1:
-                    res.append(curr.val)
+                # if i == len(curr_nodes) - 1:
+                #     res.append(curr.val)
                 if curr.left:
                     next_level.append(curr.left)
                 if curr.right:
                     next_level.append(curr.right)
+            res.append(curr.val)
             if next_level:
                 qu.append(next_level)
         return res
