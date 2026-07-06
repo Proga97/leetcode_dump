@@ -6,21 +6,31 @@
 #         self.right = right
 class Solution:
     def isValidSequence(self, root: Optional[TreeNode], arr: List[int]) -> bool:
-        if not root:
-            return False
-        res = ""
-        for s in arr:
-            res += str(s)
-        def dfs(node, curr, res):
-            if not node:
+        # if not root:
+        #     return False
+        # res = ""
+        # for s in arr:
+        #     res += str(s)
+        # def dfs(node, curr, res):
+        #     if not node:
+        #         return False
+        #     curr = curr + str(node.val)
+        #     if not node.left and not node.right:
+        #         if curr == res:
+        #             return True
+        #         return False
+        #     return dfs(node.left,curr,res) or dfs(node.right,curr,res)
+        # return dfs(root,"",res)
+
+        n=len(arr)
+        def dfs(node,idx):
+            if not node or idx>=n or arr[idx]!=node.val:
                 return False
-            curr = curr + str(node.val)
-            if not node.left and not node.right:
-                if curr == res:
-                    return True
-                return False
-            return dfs(node.left,curr,res) or dfs(node.right,curr,res)
-        return dfs(root,"",res)
+            if not node.left and not node.right and idx==n-1:
+                return True
+            return dfs(node.left,idx+1) or dfs(node.right,idx+1)
+
+        return dfs(root,0)
         
 
 # Synced seamlessly with LeetHub Pro
