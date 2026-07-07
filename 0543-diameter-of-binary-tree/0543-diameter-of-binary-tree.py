@@ -5,23 +5,26 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    
-
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-        self._diameter = 0
+        diameter = 0
+        def dfs(node):
+            nonlocal diameter 
+            if not node:
+                return -1
+            
+            l_d = dfs(node.left) 
+            r_d = dfs(node.right)
 
-        def findDepth(root) -> int:
-            if not root:
-                return 0
+            diameter = max(diameter, l_d + r_d + 2)
 
-            l = findDepth(root.left)
-            r = findDepth(root.right)    
-            self._diameter = max(self._diameter, l+r)
-            return 1 + max(l,r)
+            return max(l_d,r_d) + 1
+
+        dfs(root)
+
+        return diameter
+
         
-        findDepth(root)
 
-        return  self._diameter
-
-    
-        
+# Synced seamlessly with LeetHub Pro
+# Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
+# Get it here: https://chromewebstore.google.com/detail/bcilpkkbokcopmabingnndookdogmbna
