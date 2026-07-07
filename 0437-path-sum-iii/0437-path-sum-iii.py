@@ -6,25 +6,28 @@
 #         self.right = right
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
-        res = 0
         paths = 0
-        def dfs(node,curr_path):
+        prefix_map = defaultdict(int)
+        prefix_map[0] = 1
+
+        def dfs(node, curr_sum):
+            nonlocal paths
             if not node:
                 return 0
-            curr_path.append(node.val)
-            path_sum = 0
-            paths = 0
-            for i in range(len(curr_path)-1,-1,-1):
-                path_sum += curr_path[i]
-                if path_sum == targetSum:
-                    paths += 1       
+        
+            curr_sum += node.val  
+            paths += prefix_map[curr_sum - targetSum]    
 
-            
-            paths += dfs(node.left,curr_path[:])
-            paths +=  dfs(node.right,curr_path[:])
-            return paths
+            prefix_map[curr_sum] += 1
 
-        return dfs(root,[])
+            dfs(node.left,curr_sum)
+            dfs(node.right,curr_sum)
+
+            prefix_map[curr_sum] -= 1
+
+        dfs(root,0)
+
+        return paths
             
         
 
