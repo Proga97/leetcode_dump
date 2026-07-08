@@ -14,6 +14,7 @@ class Solution:
                     for j in range(len(isConnected[n])):
                         if isConnected[n][j] and not seen[j]:
                             stack.append(j)
+                            
         return count
 
 
