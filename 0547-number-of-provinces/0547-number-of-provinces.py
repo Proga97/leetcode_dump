@@ -10,10 +10,11 @@ class Solution:
                 count += 1  
                 while stack:
                     n = stack.pop()
-                    seen[n] = True
                     for j in range(len(isConnected[n])):
                         if isConnected[n][j] and not seen[j]:
                             stack.append(j)
+                            seen[j] = True
+
                             
         return count
 
