@@ -3,35 +3,40 @@ class Solution:
         if source == target:
             return 0
         stops_map = defaultdict(list)
-        for bus,stops in enumerate(routes):
-            for stop in stops:
-                if stop in stops_map:
-                    stops_map[stop].append(bus)
-                else: stops_map[stop] = [bus]
+        for bus in range(len(routes)):
+            for stop in routes[bus]:
+                stops_map[stop].append(bus)
+        if source not in stops_map or target not in stops_map:
+            return -1
         # print(stops_map)
-        buses = 1
-        queue = collections.deque()
         seen = set()
+        stopsVisited = set()
+        queue = deque()
         queue.append(stops_map[source])
-        # print(queue)
+        for bus in stops_map[source]:
+            seen.add(bus)
+        bus_count = 1
         while queue:
-            current_buses = queue.popleft()
-            new_buses = []
-            for bus in current_buses:
-                if bus not in seen:
-                    seen.add(bus)
-                    for stop in routes[bus]:
+            curr_buses = queue.popleft()
+            next_buses = []
+            for bus in curr_buses:
+                for stop in routes[bus]:
+                    if stop not in stopsVisited:
+                        stopsVisited.add(stop)
+                        # print("stop",stop)
                         if stop == target:
-                            return buses
+                            return bus_count
                         for next_bus in stops_map[stop]:
-                            # print("next bus",next_bus)
                             if next_bus not in seen:
-                                new_buses.append(next_bus)
-            if new_buses:
-                queue.append(new_buses)
-            buses += 1
+                                next_buses.append(next_bus)    
+                                seen.add(next_bus)
+            if next_buses:
+                queue.append(next_buses)
+            bus_count += 1
+        return -1
 
-        return -1   
+
+
 
                         
 
@@ -43,4 +48,4 @@ class Solution:
 
 # Synced seamlessly with LeetHub Pro
 # Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
-# Get it here: https://chromewebstore.google.com/detail/leethub-v4/bcilpkkbokcopmabingnndookdogmbna
+# Get it here: https://chromewebstore.google.com/detail/bcilpkkbokcopmabingnndookdogmbna
