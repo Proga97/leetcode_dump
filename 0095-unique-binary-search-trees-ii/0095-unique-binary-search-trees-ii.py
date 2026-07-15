@@ -6,10 +6,12 @@
 #         self.right = right
 class Solution:
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
-        
+        mem = {}
         def generate(left, right):
             # if left == right:
             #     return [TreeNode(left)]
+            if (left,right) in mem:
+                return mem[(left,right)]
             if left > right:
                 return [None]
             
@@ -20,6 +22,7 @@ class Solution:
                 for leftTree in leftTrees:
                     for rightTree in rightTrees:
                         res.append(TreeNode(root, left= leftTree, right = rightTree))
+            mem[(left,right)] = res
             return res
         
         return generate(1, n)
