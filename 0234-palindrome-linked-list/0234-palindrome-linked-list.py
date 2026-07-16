@@ -6,29 +6,37 @@
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
         if not head:
-            return 
-        fast = head
+            return False
+
         slow = head
+        fast = head
+
         while fast and fast.next:
-            fast = fast.next.next
             slow = slow.next
+            fast = fast.next.next
         
         prev = None
-        while slow:
-            next = slow.next
-            slow.next = prev
-            prev = slow
-            slow = next
-        curr = head
-        # print(prev,"hi",curr)
-        
-        while curr and prev:
-            if curr.val != prev.val:
+        curr = slow
+        while curr:
+            nextNode = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nextNode
+
+        check = head
+        while prev and check:
+            if prev.val != check.val:
                 return False
-            curr = curr.next
             prev = prev.next
+            check = check.next
         return True
 
 
 
         
+
+
+
+# Synced seamlessly with LeetHub Pro
+# Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
+# Get it here: https://chromewebstore.google.com/detail/bcilpkkbokcopmabingnndookdogmbna
