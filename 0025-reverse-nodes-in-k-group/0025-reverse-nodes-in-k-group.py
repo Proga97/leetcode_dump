@@ -5,8 +5,8 @@
 #         self.next = next
 class Solution:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
-        if not head or k <= 1:
-            return head
+        # if not head or k <= 1:
+        #     return head
         
         dummy = ListNode(0, head)
         prevGroup = dummy
