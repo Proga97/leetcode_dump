@@ -8,30 +8,40 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        l1, l2 = head, head.next
-        while l2 and l2.next:
-            l1 = l1.next
-            l2 = l2.next.next
-        
-        curr = l1.next
-        prev = None 
-        l1.next = None
+        if not head:
+            return 
+
+        slow = head
+        fast = head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        prev = None
+        curr = slow
         while curr:
-            next = curr.next
+            nextNode = curr.next
             curr.next = prev
-            prev = curr 
-            curr = next  
+            prev = curr
+            curr = nextNode
         
-        first = head
-        second = prev
-        while second:
-            t1, t2 = first.next,second.next
-            first.next = second
-            second.next = t1
-            first = t1
-            second = t2
+        node = head
+        while prev.next:
+            temp = node.next
+            node.next = prev
+            node = temp
+
+            temp2 = prev.next
+            prev.next = node
+            prev = temp2
+        
+
+        
+
         
         
-        
-        
-        
+
+# Synced seamlessly with LeetHub Pro
+# Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
+# Get it here: https://chromewebstore.google.com/detail/bcilpkkbokcopmabingnndookdogmbna
