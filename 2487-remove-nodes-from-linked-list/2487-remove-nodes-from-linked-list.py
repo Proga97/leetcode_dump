@@ -20,7 +20,7 @@ class Solution:
         #     curr = curr.next
         # return dummy.next
 
-
+        # with no new creation of linked list
         curr = head
         stack = []
         while curr:
