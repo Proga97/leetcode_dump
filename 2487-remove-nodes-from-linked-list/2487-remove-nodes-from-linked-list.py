@@ -5,23 +5,33 @@
 #         self.next = next
 class Solution:
     def removeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        # if not head:
-        #     return head
-        
+       
+        # curr = head
+        # stack = []
+        # while curr:
+        #     while stack and stack[-1] < curr.val:
+        #         stack.pop()
+        #     stack.append(curr.val)
+        #     curr = curr.next
+        # dummy = ListNode(0)
+        # curr = dummy
+        # for val in stack:
+        #     curr.next = ListNode(val)
+        #     curr = curr.next
+        # return dummy.next
+
+
         curr = head
         stack = []
         while curr:
-            while stack and stack[-1] < curr.val:
+            while stack and stack[-1].val < curr.val:
                 stack.pop()
-            stack.append(curr.val)
+            if stack:
+                stack[-1].next = curr
+            stack.append(curr)
             curr = curr.next
-        dummy = ListNode(0)
-        curr = dummy
-        for val in stack:
-            curr.next = ListNode(val)
-            curr = curr.next
-        return dummy.next
         
+        return stack[0]
 
 # Synced seamlessly with LeetHub Pro
 # Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
