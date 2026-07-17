@@ -5,8 +5,8 @@
 #         self.next = next
 class Solution:
     def removeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head:
-            return head
+        # if not head:
+        #     return head
         
         curr = head
         stack = []
