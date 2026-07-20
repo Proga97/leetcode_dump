@@ -1,20 +1,15 @@
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
         dist_map = defaultdict(list)
+        heap = []
+
         for x, y in points:
             dist = math.sqrt(x**2 + y **2)
-            dist_map[dist].append([x,y])
-        
-        heap = []
-        for dist, cord in dist_map.items():
-            for c in cord:
-                heapq.heappush(heap, (-dist, c))
-                if len(heap) > k:
-                    heapq.heappop(heap)
+            heapq.heappush(heap, (dist, [x,y]))
 
         res = []
-        for dist, cord in heap:
-            res.append(cord)
+        for _ in range(k):
+            res.append(heapq.heappop(heap)[1])
         return res
         
 
