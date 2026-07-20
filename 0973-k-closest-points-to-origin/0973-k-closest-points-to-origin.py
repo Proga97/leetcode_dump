@@ -1,6 +1,5 @@
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
-        dist_map = defaultdict(list)
         heap = []
 
         for x, y in points:
