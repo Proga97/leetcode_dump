@@ -5,16 +5,15 @@ class KthLargest:
         self.k = k
    
         for n in nums:
-            heappush(self.heap, n)
-            if len(self.heap) > self.k:
-                heappop(self.heap)
+            self.add(n)
+            # heappush(self.heap, n)
+            # if len(self.heap) > self.k:
+            #     heappop(self.heap)
 
     def add(self, val: int) -> int:
-        if len(self.heap) >= self.k:
-            heappush(self.heap, val)
+        heappush(self.heap, val)
+        if len(self.heap) > self.k:
             heappop(self.heap)
-        else:
-            heappush(self.heap, val)
 
         return self.heap[0]
         
