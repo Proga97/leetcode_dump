@@ -4,7 +4,7 @@ class Solution:
         heap = []
 
         for x, y in points:
-            dist = math.sqrt(x**2 + y **2)
+            dist = x**2 + y **2
             heapq.heappush(heap, (dist, [x,y]))
 
         res = []
