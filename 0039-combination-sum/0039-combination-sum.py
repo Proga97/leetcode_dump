@@ -3,9 +3,6 @@ class Solution:
         res = []
 
         def dfs(i , path, total):
-            # if i >= len(candidates):
-            #     if total == target: res.append(path[:])
-            #     return
             if total == target:
                 res.append(path[:])
                 return
@@ -15,8 +12,7 @@ class Solution:
                     path.append(candidates[j])
                     dfs(j, path, total + candidates[j])
                     path.pop()
-            
-            # dfs(i + 1, path, total)
+
             return 
         
         dfs(0, [], 0)
