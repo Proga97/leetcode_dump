@@ -7,8 +7,7 @@ import threading
 #         self.left = left
 #         self.right = right
 class Solution:
-    def __init__(self):
-        self.root = None
+
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         self.root = root
         num_threads = os.cpu_count()
@@ -34,7 +33,7 @@ class Solution:
             self.invert_tree_multi(node.right, num_threads) 
             self.invert_tree_multi(node.left, num_threads)
 
-        return self.root
+        return node
      
 
 
