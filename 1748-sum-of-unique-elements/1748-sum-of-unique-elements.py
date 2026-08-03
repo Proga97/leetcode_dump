@@ -3,13 +3,12 @@ class Solution:
         freq = Counter(nums)
         buckets = [[] for _ in range(len(nums) + 1)]
 
+        res = 0
         for key, f in freq.items():
-            buckets[f].append(key)
-                
-        if buckets[1]:
-            return sum(buckets[1])
+            if f == 1:
+                res += key
     
-        return 0
+        return res
 
 
 # Synced seamlessly with LeetHub Pro
