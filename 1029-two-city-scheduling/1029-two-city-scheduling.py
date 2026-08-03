@@ -7,10 +7,11 @@ class Solution:
         diff.sort()
         res = 0 
         #first half to city one and second to city 2
-        for i in range(len(diff)):
-            if i < len(diff) /2:
-                res += diff[i][2]
-            else: res += diff[i][1]
+        for i in range(len(diff)//2):
+            res += diff[i][2]
+            
+        for i in range(len(diff)//2, len(diff)):
+            res += diff[i][1]
         
         return res
 
