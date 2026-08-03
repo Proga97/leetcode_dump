@@ -19,8 +19,7 @@ class BSTIterator:
 
     def next(self) -> int:
         node = self.stack.pop()
-        if node.right:
-            self.left_inorder(node.right)
+        self.left_inorder(node.right)
         return node.val
 
     def hasNext(self) -> bool:
