@@ -5,7 +5,25 @@
 #         self.next = next
 class Solution:
     def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        
+        helperNode = head.next
+        sumNode = helperNode
+
+        while sumNode:
+            accumulatedSum = 0
+            # Accumulate sum of nodes between zeros
+            while sumNode.val != 0:
+                accumulatedSum += sumNode.val
+                sumNode = sumNode.next
+
+            # Assign the accumulated sum to the current node's value
+            helperNode.val = accumulatedSum
+            # Move sumNode to the first non-zero value of the next segment
+            sumNode = sumNode.next
+            # Move helperNode also to this node
+            helperNode.next = sumNode
+            helperNode = helperNode.next
+
+        return head.next        
         dummy = ListNode(val = 0, next = head)
         prev = dummy
         curr = head.next
