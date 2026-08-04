@@ -8,19 +8,15 @@ class Solution:
         
         dummy = ListNode(val = 0, next = head)
         prev = dummy
-        curr = head
-        next = head.next
+        curr = head.next
         while curr:
-            if curr.val == 0 and curr.next:
-                val = 0
+            val = 0
+            while curr and curr.val != 0:
+                val += curr.val
                 curr = curr.next
-                while curr and curr.val != 0:
-                    val += curr.val
-                    curr = curr.next
-                prev.next = ListNode(val = val)
-                prev = prev.next
-            else:
-                curr = curr.next
+            prev.next = ListNode(val = val)
+            prev = prev.next
+            curr = curr.next
         return dummy.next
 
 
