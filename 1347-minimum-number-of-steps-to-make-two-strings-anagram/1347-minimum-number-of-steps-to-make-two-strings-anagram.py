@@ -10,9 +10,10 @@ class Solution:
         
         changes = 0
         for count in count_t.values():
-            changes += abs(count)
+            if count > 0:
+                changes += count
         
-        return changes // 2
+        return changes 
 
         
 
