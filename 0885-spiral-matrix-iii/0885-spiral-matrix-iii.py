@@ -3,6 +3,20 @@ class Solution:
         dir = [[0, 1], [1, 0], [0, -1], [-1, 0]]
         res = []
         width = 1
+        direction = 0 
+        while len(res) < rows * cols:
+            for _ in range(2):
+                for _ in range(width):                    
+                    if 0 <= rStart < rows and 0 <= cStart < cols:
+                        res.append([rStart, cStart])
+                    cStart += dir[direction][1]
+                    rStart += dir[direction][0]
+                direction = (direction + 1) % 4
+            width += 1
+        return res
+        ########################
+        res = []
+        width = 1
         moved_east = False
         while len(res) < rows * cols:
             if not moved_east:
