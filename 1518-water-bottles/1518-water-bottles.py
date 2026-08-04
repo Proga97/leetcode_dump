@@ -2,8 +2,8 @@ class Solution:
     def numWaterBottles(self, numBottles: int, numExchange: int) -> int:
         drank = 0
         num_empty = 0
-        # prev = numBottles
         emptyBottles = 0
+
         while numBottles > 0:
             drank += numBottles
             emptyBottles += numBottles
@@ -11,9 +11,6 @@ class Solution:
             numBottles = emptyBottles//numExchange 
             emptyBottles =  emptyBottles % numExchange
 
-            # if prev == numBottles:
-            #     return drank
-            # prev = numBottles
         return drank
             
 
