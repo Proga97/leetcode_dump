@@ -3,13 +3,11 @@ class Solution:
         for i in range(n, n + 10):
             res = 1 
             temp = i
-            while i > 0:
-                res = res * (i % 10)
-                i = i // 10
-                # print(res, i)
-            # print(res, temp, "y")
+            while temp > 0:
+                res = res * (temp % 10)
+                temp = temp // 10
             if res % t == 0:
-                return temp
+                return i
         return n
 
                              
