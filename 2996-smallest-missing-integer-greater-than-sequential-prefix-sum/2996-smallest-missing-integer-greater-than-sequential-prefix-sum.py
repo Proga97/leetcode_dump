@@ -1,14 +1,15 @@
 class Solution:
     def missingInteger(self, nums: List[int]) -> int:
-        res = []
-        res.append(nums[0])
+        # res = []
+        # res.append(nums[0])
+        total = nums[0]
         for i in range(1, len(nums)):
             if nums[i] == nums[i -1] + 1:
-                res.append(nums[i])
+                # res.append(nums[i])
+                total += nums[i]
             else:
                 break
-        
-        total = sum(res)
+    
         nums = set(nums) 
         while total in nums:
             total += 1
