@@ -4,14 +4,14 @@ class Solution:
         total = 0
         for i in range(k):
             total += nums[i]
-        res = max(res, total/k)
+        res = max(res, total)
 
         for i in range(k, len(nums)):
             total -= nums[i-k]
             total += nums[i]
-            res = max(res, total/k)
+            res = max(res, total)
         
-        return res
+        return res / k
 
         
 
