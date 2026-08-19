@@ -1,12 +1,10 @@
 class Solution:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
         w_length = len(words[0])
-        w_map = defaultdict(int)
-        for w in words:
-            w_map[w] += 1
-        # print(w_map)
+        w_map = Counter(words)
         req = len(words)
         res = []
+        
         for i in range (len(s) - req * w_length + 1):
             seen = defaultdict(int)
             for j in range(i, i + req * w_length, w_length):
