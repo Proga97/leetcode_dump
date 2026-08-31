@@ -23,7 +23,6 @@ class LRUCache:
         node = self.hash[key]
         self.remove(node)
         self.add(node)
-
         return node.val
 
     def put(self, key: int, value: int) -> None:
@@ -38,7 +37,6 @@ class LRUCache:
             node_del = self.head.next
             del self.hash[node_del.key]
             self.remove(node_del)
-
         
     def add(self, node):
         prev_node = self.tail.prev
