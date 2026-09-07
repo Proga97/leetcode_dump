@@ -11,10 +11,10 @@ class Solution:
 
         # return (dp[-1] - 1) % MOD
 
-        res = 0
+        res = 0 # []
         dp = defaultdict(int)
         for c in s:
-            new = res + 1 - dp[c]
+            new = res + 1 - dp[c] #["a"] -> ["a", "ab", "b"] +1 for the single cause no empty""
             res = (res + new) % MOD
             dp[c] += new
 
