@@ -2,7 +2,10 @@ class Solution:
     def hasValidPath(self, grid: list[list[str]]) -> bool:
         m = len(grid)
         n = len(grid[0])
+        path_len = n + m - 1
 
+        if path_len % 2 == 1:
+            return False
         if grid[0][0] == ")" or grid[m - 1][n - 1] == "(": return False
 
         dp = {}
