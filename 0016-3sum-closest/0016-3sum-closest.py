@@ -3,11 +3,12 @@ class Solution:
         nums.sort()
         print(nums)
         res = float("inf")
-        for i in range(len(nums)):
+        for i in range(len(nums) - 2):
             l = i + 1
             h = len(nums) - 1
             while l < h:
                 total = nums[i] + nums[l] + nums[h]
+                if total == target: return total
                 if abs(res) > abs(total - target): 
                     res = total - target
                 if total < target: l += 1
