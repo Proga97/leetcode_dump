@@ -10,16 +10,29 @@ class Solution:
         #         stack.append(c)
         # return "".join(res)
 
-        res = []
-        level = 0
-        for c in s:
-            if c == ")":
-                level -= 1
-            if level > 0:
-                res.append(c)
-            if c == "(":
-                level += 1
+        # res = []
+        # level = 0
+        # for c in s:
+        #     if c == ")":
+        #         level -= 1
+        #     if level > 0:
+        #         res.append(c)
+        #     if c == "(":
+        #         level += 1
 
+        # return "".join(res)
+
+        res=[]
+        count=0
+        for ch in s:
+            if ch=='(':
+                if count>0:
+                    res.append(ch)
+                count+=1
+            else:
+                count-=1
+                if count>0:
+                    res.append(ch)
         return "".join(res)
 
 # Synced seamlessly with LeetHub Pro
