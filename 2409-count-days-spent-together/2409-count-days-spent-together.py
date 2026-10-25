@@ -2,8 +2,8 @@ class Solution:
     def countDaysTogether(self, arriveAlice: str, leaveAlice: str, arriveBob: str, leaveBob: str) -> int:
         datesOfMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
         prefixSum = [0]
-        for date in datesOfMonths:
-            prefixSum.append(prefixSum[-1] + date)
+        for days in datesOfMonths:
+            prefixSum.append(prefixSum[-1] + days)
 
         arriveAliceDay = self.calculateDayOfYear(arriveAlice, prefixSum)
         leaveAliceDay = self.calculateDayOfYear(leaveAlice, prefixSum)
