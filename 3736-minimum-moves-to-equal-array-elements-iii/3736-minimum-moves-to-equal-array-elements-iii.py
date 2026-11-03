@@ -2,9 +2,9 @@ class Solution:
     def minMoves(self, nums: List[int]) -> int:
         max_v = max(nums)
         res = 0
-        
+
         for n in nums:
-            res = res + max_v - n
+            res += max_v - n
         
         return res
 
