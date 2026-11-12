@@ -1,9 +1,6 @@
 class Solution:
     def longestMonotonicSubarray(self, nums: List[int]) -> int:
-        ass = 1
-        des = 1
-
-        res = 1
+        ass, des, res = 1, 1, 1
 
         for i in range(1,len(nums)):
             if nums[i] > nums[i-1]: 
